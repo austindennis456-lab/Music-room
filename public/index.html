@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b1020">
+  <meta name="description" content="A little shared music room.">
+  <title>just us. — shared music room</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="Just Us home"><span class="brand-mark">♪</span><span>just us<span class="period">.</span></span></a>
+      <div class="connection"><span class="dot" id="connectionDot"></span><span id="connectionText">Connecting…</span></div>
+    </header>
+
+    <section class="intro">
+      <p class="eyebrow">YOUR SHARED LISTENING ROOM</p>
+      <h1>A little music,<br><em>a little us.</em></h1>
+      <p class="sub">Same room. Same song. Wherever you are.</p>
+    </section>
+
+    <section class="room-bar">
+      <div><span class="label">ROOM LINK</span><strong id="roomLabel">just-us</strong></div>
+      <button class="button subtle" id="shareBtn">Share room ↗</button>
+    </section>
+
+    <section class="player-card">
+      <div class="art">
+        <div class="art-glow"></div><div class="moon"></div>
+        <div class="art-copy"><span>NOW PLAYING</span><strong id="nowTitle">Add a song to begin</strong><small id="playStatus">Your room is waiting</small></div>
+        <div id="youtubePlayer" class="yt-player"></div>
+      </div>
+      <div class="controls">
+        <div class="track-info"><span id="trackName">Nothing playing yet</span><span class="live-pill"><i></i> LIVE ROOM</span></div>
+        <div class="progress-row"><span id="elapsed">0:00</span><input id="seek" aria-label="Seek through song" type="range" min="0" max="100" value="0"><span id="duration">0:00</span></div>
+        <div class="control-buttons">
+          <button class="icon-btn" id="prevBtn" aria-label="Previous song" title="Previous">|‹</button>
+          <button class="play-btn" id="playBtn" aria-label="Play or pause">▶</button>
+          <button class="icon-btn" id="nextBtn" aria-label="Next song" title="Next">›|</button>
+        </div>
+        <p class="sync-note" id="syncNote">Both of you can control the music.</p>
+      </div>
+    </section>
+
+    <section class="add-section">
+      <div class="section-heading"><div><p class="eyebrow">THE SOUNDTRACK</p><h2>Add a song</h2></div><span class="queue-count" id="queueCount">0 songs</span></div>
+      <form id="addForm" class="add-form">
+        <label class="sr-only" for="youtubeUrl">YouTube URL</label>
+        <input id="youtubeUrl" type="url" placeholder="Paste a YouTube link…" autocomplete="url" required>
+        <button class="button primary" type="submit">Add song <span>＋</span></button>
+      </form>
+      <p class="hint">Paste a YouTube video or youtu.be link. Music plays inside YouTube's player.</p>
+      <div class="queue" id="queue"><div class="empty"><span>♫</span><p>Your shared queue will appear here.</p></div></div>
+    </section>
+
+    <footer><span>Made for two ears at a time.</span><span>Be kind. Share good songs.</span></footer>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </main>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script src="/app.js"></script>
+</body>
+</html>
